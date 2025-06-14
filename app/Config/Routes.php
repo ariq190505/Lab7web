@@ -12,3 +12,4 @@ $routes->get('/about', 'Page::about');
 $routes->get('/contact', 'Page::contact');
 $routes->get('/faqs', 'Page::faqs');
 $routes->get('/artikel', 'Artikel::index');
+$routes->get('/testdb', 'Page::testdb');

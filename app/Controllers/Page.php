@@ -48,24 +48,70 @@ class Page extends BaseController
 
     public function testdb()
     {
-        $db = \Config\Database::connect();
+        echo "<h1>Test Koneksi Database</h1>";
+        echo "<hr>";
 
-        if ($db->connID) {
-            echo "Koneksi database berhasil!<br>";
-            echo "Database: " . $db->getDatabase() . "<br>";
+        try {
+            $db = \Config\Database::connect();
 
-            // Test query
-            $query = $db->query("SHOW TABLES");
-            $tables = $query->getResult();
+            // Test koneksi
+            if ($db->connID) {
+                echo "<p style='color: green;'>✅ Koneksi database berhasil!</p>";
+                echo "<p><strong>Database:</strong> " . $db->getDatabase() . "</p>";
+                echo "<p><strong>Host:</strong> " . $db->hostname . "</p>";
+                echo "<p><strong>Username:</strong> " . $db->username . "</p>";
 
-            echo "Tabel yang ada:<br>";
-            foreach ($tables as $table) {
-                foreach ($table as $tableName) {
-                    echo "- " . $tableName . "<br>";
+                // Test query untuk melihat tabel
+                try {
+                    $query = $db->query("SHOW TABLES");
+                    $tables = $query->getResult();
+
+                    echo "<h3>Tabel yang ada:</h3>";
+                    if (count($tables) > 0) {
+                        echo "<ul>";
+                        foreach ($tables as $table) {
+                            foreach ($table as $tableName) {
+                                echo "<li>" . $tableName . "</li>";
+                            }
+                        }
+                        echo "</ul>";
+
+                        // Test query artikel jika tabel artikel ada
+                        $artikelExists = false;
+                        foreach ($tables as $table) {
+                            foreach ($table as $tableName) {
+                                if ($tableName == 'artikel') {
+                                    $artikelExists = true;
+                                    break 2;
+                                }
+                            }
+                        }
+
+                        if ($artikelExists) {
+                            $artikelQuery = $db->query("SELECT COUNT(*) as total FROM artikel");
+                            $result = $artikelQuery->getRow();
+                            echo "<p><strong>Jumlah artikel:</strong> " . $result->total . "</p>";
+                        }
+                    } else {
+                        echo "<p>Tidak ada tabel dalam database.</p>";
+                    }
+                } catch (\Exception $e) {
+                    echo "<p style='color: orange;'>⚠️ Error saat mengakses tabel: " . $e->getMessage() . "</p>";
                 }
+
+            } else {
+                echo "<p style='color: red;'>❌ Koneksi database gagal!</p>";
             }
-        } else {
-            echo "Koneksi database gagal!";
+        } catch (\Exception $e) {
+            echo "<p style='color: red;'>❌ Error: " . $e->getMessage() . "</p>";
+            echo "<p>Pastikan:</p>";
+            echo "<ul>";
+            echo "<li>XAMPP MySQL sudah running</li>";
+            echo "<li>Database 'lab_ci4' sudah dibuat</li>";
+            echo "<li>Konfigurasi di file .env sudah benar</li>";
+            echo "</ul>";
         }
+
+        echo "<br><a href='" . base_url() . "'>← Kembali ke Home</a>";
     }
 }
