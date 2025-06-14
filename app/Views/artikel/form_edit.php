@@ -9,11 +9,11 @@
 <form action="" method="post">
     <p>
         <label for="judul">Judul Artikel:</label>
-        <input type="text" id="judul" name="judul" value="<?= old('judul', $data['judul']); ?>" required>
+        <input type="text" id="judul" name="judul" value="<?= old('judul', $data['judul']); ?>" placeholder="Masukkan judul artikel" required>
     </p>
     <p>
         <label for="isi">Isi Artikel:</label>
-        <textarea id="isi" name="isi" cols="50" rows="10"><?= old('isi', $data['isi']); ?></textarea>
+        <textarea id="isi" name="isi" cols="50" rows="10" placeholder="Masukkan isi artikel"><?= old('isi', $data['isi']); ?></textarea>
     </p>
     <p>
         <input type="submit" value="Update Artikel" class="btn btn-primary btn-large">
