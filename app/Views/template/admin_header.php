@@ -18,5 +18,4 @@
         <section id="wrapper">
             <section id="main">
                 <div class="admin-content">
-                    <h1><?= $title; ?></h1>
-                    <hr>
+                    <h2><?= $title; ?></h2>

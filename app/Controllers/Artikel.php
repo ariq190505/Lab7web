@@ -41,30 +41,39 @@ class Artikel extends BaseController
 
     public function add()
     {
-        // validasi data.
-        $validation = \Config\Services::validation();
-        $validation->setRules([
-            'judul' => 'required|min_length[3]|max_length[200]',
-            'isi' => 'required|min_length[10]'
-        ]);
-        $isDataValid = $validation->withRequest($this->request)->run();
+        $title = "Tambah Artikel";
 
-        if ($isDataValid) {
-            $artikel = new ArtikelModel();
-            $artikel->insert([
-                'judul' => $this->request->getPost('judul'),
-                'isi' => $this->request->getPost('isi'),
-                'slug' => url_title($this->request->getPost('judul')),
-                'status' => 0 // Default status draft
+        // Cek apakah form sudah di-submit
+        if ($this->request->getMethod() === 'post') {
+            // validasi data.
+            $validation = \Config\Services::validation();
+            $validation->setRules([
+                'judul' => 'required|min_length[3]|max_length[200]',
+                'isi' => 'required|min_length[10]'
             ]);
+            $isDataValid = $validation->withRequest($this->request)->run();
 
-            session()->setFlashdata('success', 'Artikel berhasil ditambahkan!');
-            return redirect('admin/artikel');
-        } else {
-            session()->setFlashdata('error', 'Data tidak valid. Periksa kembali form Anda.');
+            if ($isDataValid) {
+                $artikel = new ArtikelModel();
+                $artikel->insert([
+                    'judul' => $this->request->getPost('judul'),
+                    'isi' => $this->request->getPost('isi'),
+                    'slug' => url_title($this->request->getPost('judul')),
+                    'status' => 0 // Default status draft
+                ]);
+
+                session()->setFlashdata('success', 'Artikel berhasil ditambahkan!');
+                return redirect('admin/artikel');
+            } else {
+                $errors = $validation->getErrors();
+                $errorMessage = '';
+                foreach ($errors as $error) {
+                    $errorMessage .= $error . ' ';
+                }
+                session()->setFlashdata('error', trim($errorMessage));
+            }
         }
 
-        $title = "Tambah Artikel";
         return view('artikel/form_add', compact('title'));
     }
 
