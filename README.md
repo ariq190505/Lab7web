@@ -292,6 +292,37 @@ Semua link navigasi berfungsi dengan baik dan menggunakan layout yang konsisten.
    ```
 4. Buka browser dan akses `http://localhost:8080`
 
+## Langkah 7: Setup Database untuk CRUD
+
+### 7.1 Persiapan Database
+1. Pastikan XAMPP sudah running dan MySQL service aktif
+2. Buka phpMyAdmin: `http://localhost/phpmyadmin`
+3. Import file `database_setup.sql` atau jalankan query manual
+
+### 7.2 Konfigurasi Database
+File `.env` sudah dikonfigurasi dengan:
+```
+CI_ENVIRONMENT = development
+database.default.hostname = localhost
+database.default.database = lab_ci4
+database.default.username = root
+database.default.password =
+database.default.DBDriver = MySQLi
+```
+
+### 7.3 Test Koneksi Database
+Akses: `http://localhost:8080/page/testdb` untuk test koneksi database
+
+### 7.4 Struktur Tabel Artikel
+| Field  | Type         | Size | Keterangan                    |
+|--------|--------------|------|-------------------------------|
+| id     | INT          | 11   | PRIMARY KEY, auto_increment   |
+| judul  | VARCHAR      | 200  | Judul artikel                 |
+| isi    | TEXT         | -    | Isi/konten artikel            |
+| gambar | VARCHAR      | 200  | Nama file gambar              |
+| status | TINYINT      | 1    | Status publish (0/1)          |
+| slug   | VARCHAR      | 200  | URL slug artikel              |
+
 ## Author
 - Nama: [Nama Anda]
 - NIM: [NIM Anda]

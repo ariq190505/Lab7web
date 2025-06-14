@@ -261,3 +261,27 @@ box img {
 .artikel-list {
   margin-top: 20px;
 }
+
+/* Artikel Entry Styling */
+.entry h2 a {
+  color: #2c5aa0;
+  text-decoration: none;
+}
+
+.entry h2 a:hover {
+  color: #1a4480;
+  text-decoration: underline;
+}
+
+.entry img {
+  max-width: 200px;
+  height: auto;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+.entry p {
+  text-align: justify;
+  line-height: 1.6;
+  margin: 10px 0;
+}

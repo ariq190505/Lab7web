@@ -45,4 +45,27 @@ class Page extends BaseController
     {
         echo "Test halaman - Controller Page berfungsi!";
     }
+
+    public function testdb()
+    {
+        $db = \Config\Database::connect();
+
+        if ($db->connID) {
+            echo "Koneksi database berhasil!<br>";
+            echo "Database: " . $db->getDatabase() . "<br>";
+
+            // Test query
+            $query = $db->query("SHOW TABLES");
+            $tables = $query->getResult();
+
+            echo "Tabel yang ada:<br>";
+            foreach ($tables as $table) {
+                foreach ($table as $tableName) {
+                    echo "- " . $tableName . "<br>";
+                }
+            }
+        } else {
+            echo "Koneksi database gagal!";
+        }
+    }
 }
