@@ -16,6 +16,13 @@
         <textarea id="isi" name="isi" cols="50" rows="10" placeholder="Masukkan isi artikel"><?= old('isi', $data['isi']); ?></textarea>
     </p>
     <p>
+        <label for="status">Status:</label>
+        <select id="status" name="status">
+            <option value="0" <?= old('status', $data['status']) == '0' ? 'selected' : ''; ?>>Draft</option>
+            <option value="1" <?= old('status', $data['status']) == '1' ? 'selected' : ''; ?>>Published</option>
+        </select>
+    </p>
+    <p>
         <input type="submit" value="Update Artikel" class="btn btn-primary btn-large">
         <a href="<?= base_url('/admin/artikel'); ?>" class="btn btn-secondary">Batal</a>
     </p>

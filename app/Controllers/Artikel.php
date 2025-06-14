@@ -11,7 +11,7 @@ class Artikel extends BaseController
     {
         $title = 'Daftar Artikel';
         $model = new ArtikelModel();
-        $artikel = $model->findAll();
+        $artikel = $model->where('status', 1)->findAll(); // Hanya artikel published
         return view('artikel/index', compact('artikel', 'title'));
     }
 
@@ -59,7 +59,7 @@ class Artikel extends BaseController
                     'judul' => $this->request->getPost('judul'),
                     'isi' => $this->request->getPost('isi'),
                     'slug' => url_title($this->request->getPost('judul')),
-                    'status' => 0 // Default status draft
+                    'status' => $this->request->getPost('status') ?? 0 // Status dari form atau default draft
                 ]);
 
                 session()->setFlashdata('success', 'Artikel berhasil ditambahkan!');
@@ -96,6 +96,7 @@ class Artikel extends BaseController
                     'judul' => $this->request->getPost('judul'),
                     'isi' => $this->request->getPost('isi'),
                     'slug' => url_title($this->request->getPost('judul')),
+                    'status' => $this->request->getPost('status') ?? 0,
                 ]);
 
                 session()->setFlashdata('success', 'Artikel berhasil diubah!');
