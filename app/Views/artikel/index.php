@@ -7,7 +7,11 @@
     <?php foreach($artikel as $row): ?>
         <article class="entry">
             <h2><a href="<?= base_url('/artikel/' . $row['slug']);?>"><?= $row['judul']; ?></a></h2>
-            <img src="<?= base_url('/gambar/' . $row['gambar']);?>" alt="<?= $row['judul']; ?>">
+
+            <?php if (!empty($row['gambar'])): ?>
+                <img src="<?= base_url('/gambar/' . $row['gambar']); ?>" alt="<?= $row['judul']; ?>">
+            <?php endif; ?>
+
             <p><?= substr($row['isi'], 0, 200); ?>...</p>
         </article>
         <hr class="divider" />
