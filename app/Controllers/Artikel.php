@@ -30,4 +30,36 @@ class Artikel extends BaseController
         $title = $artikel['judul'];
         return view('artikel/detail', compact('artikel', 'title'));
     }
+
+    public function admin_index()
+    {
+        $title = 'Daftar Artikel';
+        $model = new ArtikelModel();
+        $artikel = $model->findAll();
+        return view('artikel/admin_index', compact('artikel', 'title'));
+    }
+
+    public function add()
+    {
+        // TODO: Implement add functionality
+        echo "<h1>Tambah Artikel</h1>";
+        echo "<p>Fitur ini akan diimplementasikan selanjutnya.</p>";
+        echo "<a href='" . base_url('/admin/artikel') . "'>← Kembali ke Admin</a>";
+    }
+
+    public function edit($id)
+    {
+        // TODO: Implement edit functionality
+        echo "<h1>Edit Artikel ID: $id</h1>";
+        echo "<p>Fitur ini akan diimplementasikan selanjutnya.</p>";
+        echo "<a href='" . base_url('/admin/artikel') . "'>← Kembali ke Admin</a>";
+    }
+
+    public function delete($id)
+    {
+        // TODO: Implement delete functionality
+        echo "<h1>Hapus Artikel ID: $id</h1>";
+        echo "<p>Fitur ini akan diimplementasikan selanjutnya.</p>";
+        echo "<a href='" . base_url('/admin/artikel') . "'>← Kembali ke Admin</a>";
+    }
 }
