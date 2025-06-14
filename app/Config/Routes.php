@@ -13,3 +13,4 @@ $routes->get('/contact', 'Page::contact');
 $routes->get('/faqs', 'Page::faqs');
 $routes->get('/artikel', 'Artikel::index');
 $routes->get('/testdb', 'Page::testdb');
+$routes->get('/createdb', 'Page::createdb');
