@@ -79,17 +79,62 @@ class Artikel extends BaseController
 
     public function edit($id)
     {
-        // TODO: Implement edit functionality
-        echo "<h1>Edit Artikel ID: $id</h1>";
-        echo "<p>Fitur ini akan diimplementasikan selanjutnya.</p>";
-        echo "<a href='" . base_url('/admin/artikel') . "'>← Kembali ke Admin</a>";
+        $artikel = new ArtikelModel();
+
+        // Cek apakah form sudah di-submit
+        if ($this->request->getMethod() === 'post') {
+            // validasi data.
+            $validation = \Config\Services::validation();
+            $validation->setRules([
+                'judul' => 'required|min_length[3]|max_length[200]',
+                'isi' => 'required|min_length[10]'
+            ]);
+            $isDataValid = $validation->withRequest($this->request)->run();
+
+            if ($isDataValid) {
+                $artikel->update($id, [
+                    'judul' => $this->request->getPost('judul'),
+                    'isi' => $this->request->getPost('isi'),
+                    'slug' => url_title($this->request->getPost('judul')),
+                ]);
+
+                session()->setFlashdata('success', 'Artikel berhasil diubah!');
+                return redirect('admin/artikel');
+            } else {
+                $errors = $validation->getErrors();
+                $errorMessage = '';
+                foreach ($errors as $error) {
+                    $errorMessage .= $error . ' ';
+                }
+                session()->setFlashdata('error', trim($errorMessage));
+            }
+        }
+
+        // ambil data lama
+        $data = $artikel->where('id', $id)->first();
+
+        if (!$data) {
+            session()->setFlashdata('error', 'Artikel tidak ditemukan!');
+            return redirect('admin/artikel');
+        }
+
+        $title = "Edit Artikel";
+        return view('artikel/form_edit', compact('title', 'data'));
     }
 
     public function delete($id)
     {
-        // TODO: Implement delete functionality
-        echo "<h1>Hapus Artikel ID: $id</h1>";
-        echo "<p>Fitur ini akan diimplementasikan selanjutnya.</p>";
-        echo "<a href='" . base_url('/admin/artikel') . "'>← Kembali ke Admin</a>";
+        $artikel = new ArtikelModel();
+
+        // Cek apakah artikel ada
+        $data = $artikel->where('id', $id)->first();
+        if (!$data) {
+            session()->setFlashdata('error', 'Artikel tidak ditemukan!');
+            return redirect('admin/artikel');
+        }
+
+        $artikel->delete($id);
+        session()->setFlashdata('success', 'Artikel berhasil dihapus!');
+        return redirect('admin/artikel');
     }
 }
