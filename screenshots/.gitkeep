@@ -1,0 +1,37 @@
+# Screenshots Folder
+
+Folder ini berisi screenshot untuk dokumentasi praktikum.
+
+## Daftar Screenshot yang Diperlukan:
+
+1. **database_setup.png** - Setup database dan tabel
+2. **db_connection.png** - Test koneksi database
+3. **artikel_model.png** - Model ArtikelModel
+4. **artikel_controller.png** - Controller Artikel
+5. **view_artikel.png** - View halaman artikel
+6. **form_add.png** - Form tambah artikel
+7. **form_add_filled.png** - Form tambah artikel terisi
+8. **form_edit.png** - Form edit artikel
+9. **form_edit_filled.png** - Form edit artikel terisi
+10. **delete_confirmation.png** - Konfirmasi hapus artikel
+11. **admin_panel.png** - Halaman admin panel
+12. **admin_index.png** - Daftar artikel di admin
+13. **artikel_public.png** - Halaman artikel publik
+14. **artikel_detail.png** - Detail artikel
+15. **success_message.png** - Pesan sukses
+16. **validation_error.png** - Pesan error validasi
+
+## Cara Mengambil Screenshot:
+
+1. Jalankan aplikasi dengan `php spark serve`
+2. Buka browser dan akses URL yang diperlukan
+3. Ambil screenshot untuk setiap halaman
+4. Simpan dengan nama file yang sesuai
+5. Upload ke folder screenshots/
+
+## Format Screenshot:
+
+- Format: PNG atau JPG
+- Resolusi: Minimal 1024x768
+- Kualitas: High quality
+- Nama file: sesuai dengan daftar di atas
