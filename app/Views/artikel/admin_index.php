@@ -1,9 +1,5 @@
 <?= $this->include('template/admin_header'); ?>
 
-<div class="admin-actions">
-    <a href="<?= base_url('/admin/artikel/add'); ?>" class="btn btn-primary">Tambah Artikel</a>
-</div>
-
 <div class="table-container">
     <table class="table">
         <thead>

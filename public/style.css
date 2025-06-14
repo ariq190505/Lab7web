@@ -635,16 +635,3 @@ box img {
   color: #6c757d !important;
   font-size: 13px;
 }
-
-/* Enhanced Admin Actions */
-.admin-actions {
-  margin: 20px 0;
-  text-align: right;
-  padding: 15px 0;
-  border-bottom: 2px solid #e9ecef;
-}
-
-.admin-actions .btn {
-  font-size: 14px;
-  padding: 10px 20px;
-}
