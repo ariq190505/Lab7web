@@ -1,4 +1,6 @@
-<?= $this->include('template/header'); ?>
+<?= $this->extend('layout/main') ?>
+
+<?= $this->section('content') ?>
 
 <div id="hero">
     <h1>Selamat Datang di Lab7Web</h1>
@@ -36,4 +38,4 @@
     <p>Fitur-fitur yang dipelajari meliputi pembuatan routes, controller dengan berbagai method, view dengan template, dan styling CSS untuk tampilan yang menarik.</p>
 </div>
 
-<?= $this->include('template/footer'); ?>
+<?= $this->endSection() ?>

@@ -1,4 +1,6 @@
-<?= $this->include('template/admin_header'); ?>
+<?= $this->extend('layout/admin') ?>
+
+<?= $this->section('content') ?>
 
 <?php if (session()->getFlashdata('error')): ?>
     <div class="alert alert-danger">
@@ -28,4 +30,4 @@
     </p>
 </form>
 
-<?= $this->include('template/admin_footer'); ?>
+<?= $this->endSection() ?>

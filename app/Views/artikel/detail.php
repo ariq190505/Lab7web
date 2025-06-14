@@ -1,4 +1,6 @@
-<?= $this->include('template/header'); ?>
+<?= $this->extend('layout/main') ?>
+
+<?= $this->section('content') ?>
 
 <article class="entry">
     <h2><?= $artikel['judul']; ?></h2>
@@ -10,4 +12,4 @@
     <a href="<?= base_url('/artikel'); ?>" class="btn-back">← Kembali ke Daftar Artikel</a>
 </div>
 
-<?= $this->include('template/footer'); ?>
+<?= $this->endSection() ?>
