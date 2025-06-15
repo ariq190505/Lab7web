@@ -119,7 +119,78 @@ class DatabaseTest extends BaseController
             }
             
             echo "<p><a href='" . base_url('/databasetest') . "'>Test Database Connection</a></p>";
-            
+
+        } catch (\Exception $e) {
+            echo "<p>❌ Error: " . $e->getMessage() . "</p>";
+        }
+    }
+
+    public function addSampleData()
+    {
+        echo "<h2>Add Sample Data</h2>";
+
+        try {
+            $db = \Config\Database::connect();
+
+            // Add sample articles with categories
+            $sampleArticles = [
+                [
+                    'judul' => 'Pengenalan Teknologi AI',
+                    'isi' => 'Artificial Intelligence (AI) adalah teknologi yang memungkinkan mesin untuk belajar dan membuat keputusan seperti manusia. Teknologi ini berkembang pesat dan mulai diterapkan di berbagai bidang.',
+                    'slug' => 'pengenalan-teknologi-ai',
+                    'id_kategori' => 1, // Teknologi
+                    'status' => 1
+                ],
+                [
+                    'judul' => 'Belajar Programming Python',
+                    'isi' => 'Python adalah bahasa pemrograman yang mudah dipelajari dan sangat populer. Artikel ini akan membahas dasar-dasar programming dengan Python untuk pemula.',
+                    'slug' => 'belajar-programming-python',
+                    'id_kategori' => 2, // Programming
+                    'status' => 1
+                ],
+                [
+                    'judul' => 'Tutorial Web Development',
+                    'isi' => 'Web development adalah proses pembuatan website dan aplikasi web. Tutorial ini akan membahas HTML, CSS, dan JavaScript untuk membuat website yang menarik.',
+                    'slug' => 'tutorial-web-development',
+                    'id_kategori' => 4, // Web Development
+                    'status' => 1
+                ],
+                [
+                    'judul' => 'Teknologi Blockchain Terbaru',
+                    'isi' => 'Blockchain adalah teknologi yang mendasari cryptocurrency. Artikel ini membahas perkembangan terbaru teknologi blockchain dan aplikasinya.',
+                    'slug' => 'teknologi-blockchain-terbaru',
+                    'id_kategori' => 1, // Teknologi
+                    'status' => 1
+                ],
+                [
+                    'judul' => 'Tutorial CodeIgniter 4',
+                    'isi' => 'CodeIgniter 4 adalah framework PHP yang powerful dan mudah digunakan. Tutorial ini akan membahas cara membuat aplikasi web dengan CodeIgniter 4.',
+                    'slug' => 'tutorial-codeigniter-4',
+                    'id_kategori' => 3, // Tutorial
+                    'status' => 1
+                ]
+            ];
+
+            $builder = $db->table('artikel');
+            foreach ($sampleArticles as $article) {
+                // Check if article already exists
+                $existing = $builder->where('slug', $article['slug'])->get()->getRow();
+                if (!$existing) {
+                    $article['created_at'] = date('Y-m-d H:i:s');
+                    $article['updated_at'] = date('Y-m-d H:i:s');
+                    $builder->insert($article);
+                    echo "<p>✅ Added: " . $article['judul'] . "</p>";
+                } else {
+                    echo "<p>ℹ️ Already exists: " . $article['judul'] . "</p>";
+                }
+            }
+
+            echo "<hr>";
+            echo "<p><strong>Sample data berhasil ditambahkan!</strong></p>";
+            echo "<p><a href='" . base_url('/databasetest') . "'>Test Database</a></p>";
+            echo "<p><a href='" . base_url('/artikel') . "'>Lihat Artikel</a></p>";
+            echo "<p><a href='" . base_url('/kategori/teknologi') . "'>Test Kategori Teknologi</a></p>";
+
         } catch (\Exception $e) {
             echo "<p>❌ Error: " . $e->getMessage() . "</p>";
         }

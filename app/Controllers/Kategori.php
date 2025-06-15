@@ -132,12 +132,20 @@ class Kategori extends BaseController
     public function view($slug)
     {
         $kategori = $this->kategoriModel->getBySlug($slug);
-        
+
         if (!$kategori) {
             throw new \CodeIgniter\Exceptions\PageNotFoundException('Kategori tidak ditemukan');
         }
 
-        $artikel = $this->artikelModel->getByKategori($kategori['id_kategori'], 1);
+        // Get artikel dengan JOIN untuk mendapatkan nama kategori juga
+        $builder = $this->artikelModel->db->table('artikel');
+        $builder->select('artikel.*, kategori.nama_kategori');
+        $builder->join('kategori', 'kategori.id_kategori = artikel.id_kategori', 'left');
+        $builder->where('artikel.id_kategori', $kategori['id_kategori']);
+        $builder->where('artikel.status', 1); // Only published articles
+        $builder->orderBy('artikel.created_at', 'DESC');
+
+        $artikel = $builder->get()->getResultArray();
         $title = 'Kategori: ' . $kategori['nama_kategori'];
 
         return view('kategori/view', compact('title', 'kategori', 'artikel'));

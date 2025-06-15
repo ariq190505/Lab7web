@@ -18,6 +18,7 @@ $routes->get('/testdb', 'Page::testdb');
 $routes->get('/createdb', 'Page::createdb');
 $routes->get('/databasetest', 'DatabaseTest::index');
 $routes->get('/databasetest/create', 'DatabaseTest::createTables');
+$routes->get('/databasetest/sample', 'DatabaseTest::addSampleData');
 
 // Admin routes
 $routes->group('admin', function($routes) {

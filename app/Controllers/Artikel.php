@@ -12,13 +12,43 @@ class Artikel extends BaseController
     {
         $title = 'Daftar Artikel';
         $model = new ArtikelModel();
-        // Menggunakan method getArtikelDenganKategori() untuk menampilkan artikel dengan kategori
-        $artikel = $model->getArtikelDenganKategori();
-        // Filter hanya artikel yang published
-        $artikel = array_filter($artikel, function($item) {
-            return $item['status'] == 1;
-        });
-        return view('artikel/index', compact('artikel', 'title'));
+        $kategoriModel = new KategoriModel();
+
+        // Get search keyword
+        $q = $this->request->getVar('q') ?? '';
+
+        // Get category filter
+        $kategori_id = $this->request->getVar('kategori_id') ?? '';
+
+        // Building the query for public articles
+        $builder = $model->table('artikel')
+            ->select('artikel.*, kategori.nama_kategori')
+            ->join('kategori', 'kategori.id_kategori = artikel.id_kategori', 'left')
+            ->where('artikel.status', 1); // Only published articles
+
+        // Apply search filter if keyword is provided
+        if ($q != '') {
+            $builder->like('artikel.judul', $q);
+        }
+
+        // Apply category filter if category_id is provided
+        if ($kategori_id != '') {
+            $builder->where('artikel.id_kategori', $kategori_id);
+        }
+
+        $builder->orderBy('artikel.created_at', 'DESC');
+        $artikel = $builder->get()->getResultArray();
+
+        // Get all categories for the filter dropdown
+        $kategori = $kategoriModel->findAll();
+
+        return view('artikel/index', [
+            'title' => $title,
+            'artikel' => $artikel,
+            'kategori' => $kategori,
+            'q' => $q,
+            'kategori_id' => $kategori_id
+        ]);
     }
 
 
