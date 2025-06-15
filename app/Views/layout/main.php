@@ -21,10 +21,17 @@
                 <?= $this->renderSection('content') ?>
             </section>
             <aside id="sidebar">
-                <?= view_cell('App\\Cells\\ArtikelTerkini::render') ?>
+                <div class="widget-box">
+                    <h3 class="title">Artikel Terkini</h3>
+                    <ul>
+                        <li><a href="#">Artikel Demo 1</a></li>
+                        <li><a href="#">Artikel Demo 2</a></li>
+                        <li><a href="#">Artikel Demo 3</a></li>
+                        <li><a href="#">Artikel Demo 4</a></li>
+                        <li><a href="#">Artikel Demo 5</a></li>
+                    </ul>
+                </div>
 
-                <!-- Contoh View Cell dengan kategori -->
-                <?= view_cell('App\\Cells\\ArtikelTerkini::render', ['kategori' => 'teknologi']) ?>
                 <div class="widget-box">
                     <h3 class="title">Widget Header</h3>
                     <ul>
@@ -32,6 +39,7 @@
                         <li><a href="#">Widget Link</a></li>
                     </ul>
                 </div>
+
                 <div class="widget-box">
                     <h3 class="title">Widget Text</h3>
                     <p>Vestibulum lorem elit, iaculis in nisl volutpat, malesuada tincidunt arcu. Proin in leo fringilla, vestibulum mi porta, faucibus felis. Integer pharetra est nunc, nec pretium nunc pretium ac.</p>
