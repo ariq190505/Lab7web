@@ -1,4 +1,4 @@
-# Lab7Web - Praktikum Pemrograman Web 2
+![image](https://github.com/user-attachments/assets/a1c628c3-38f4-4c4b-94f4-1ce1c5f26802)# Lab7Web - Praktikum Pemrograman Web 2
 **Repository Lengkap untuk Praktikum CodeIgniter 4**
 
 ## 📚 Informasi Praktikum
@@ -368,29 +368,17 @@ class ArtikelTerkini extends Cell
 
 ## 📸 Screenshots
 
-### Halaman Utama
-![Home Page](screenshots/home.png)
-*Halaman utama dengan layout baru dan sidebar artikel terkini*
-
 ### Daftar Artikel
-![Artikel List](screenshots/artikel_list.png)
+![Screenshot 2025-06-14 164933](https://github.com/user-attachments/assets/57a055df-4cfc-44ae-abe3-972757bbe655)
 *Halaman daftar artikel dengan View Cell sidebar*
 
-### Detail Artikel
-![Artikel Detail](screenshots/artikel_detail.png)
-*Halaman detail artikel dengan layout yang konsisten*
-
 ### Admin Panel
-![Admin Panel](screenshots/admin_panel.png)
+![image](https://github.com/user-attachments/assets/2317b89a-555a-4641-aea2-d1b6d2570eb2)
 *Admin panel dengan layout terpisah untuk manajemen artikel*
 
 ### Form Tambah Artikel
-![Form Add](screenshots/form_add.png)
+![Screenshot 2025-06-15 151209](https://github.com/user-attachments/assets/b8cc5ee2-6756-4098-972c-af0b7b31cdaa)
 *Form tambah artikel dengan validasi*
-
-### Form Edit Artikel
-![Form Edit](screenshots/form_edit.png)
-*Form edit artikel dengan data yang sudah terisi*
 
 ---
 
@@ -531,9 +519,9 @@ Aplikasi web lengkap dengan fitur CRUD, layout yang konsisten, dan komponen yang
 - **Universitas**: Pelita Bangsa, Bekasi
 
 **Mahasiswa:**
-- **Nama**: [Nama Lengkap Anda]
-- **NIM**: [NIM Anda]
-- **Kelas**: [Kelas Anda]
+- **Nama**: [Ariq Ibtihal]
+- **NIM**: [312310446]
+- **Kelas**: [TI.23.A5]
 
 ---
 
@@ -543,5 +531,5 @@ This project is created for educational purposes as part of Web Programming 2 co
 
 ---
 
-**© 2024 - Lab7Web Praktikum CodeIgniter 4**
+**© 2025 - Lab7Web Praktikum CodeIgniter 4**
 
