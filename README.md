@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/a1c628c3-38f4-4c4b-94f4-1ce1c5f26802)# Lab7Web - Praktikum Pemrograman Web 2
+# Lab7Web - Praktikum Pemrograman Web 2
 **Repository Lengkap untuk Praktikum CodeIgniter 4**
 
 ## 📚 Informasi Praktikum
@@ -369,12 +369,8 @@ class ArtikelTerkini extends Cell
 ## 📸 Screenshots
 
 ### Daftar Artikel
-![Screenshot 2025-06-14 164933](https://github.com/user-attachments/assets/57a055df-4cfc-44ae-abe3-972757bbe655)
+![image](https://github.com/user-attachments/assets/a1c628c3-38f4-4c4b-94f4-1ce1c5f26802)
 *Halaman daftar artikel dengan View Cell sidebar*
-
-### Admin Panel
-![image](https://github.com/user-attachments/assets/2317b89a-555a-4641-aea2-d1b6d2570eb2)
-*Admin panel dengan layout terpisah untuk manajemen artikel*
 
 ### Form Tambah Artikel
 ![Screenshot 2025-06-15 151209](https://github.com/user-attachments/assets/b8cc5ee2-6756-4098-972c-af0b7b31cdaa)
