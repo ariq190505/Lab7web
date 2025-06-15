@@ -18,6 +18,22 @@
         <textarea id="isi" name="isi" cols="50" rows="10" placeholder="Masukkan isi artikel"><?= old('isi', $data['isi']); ?></textarea>
     </p>
     <p>
+        <label for="id_kategori">Kategori:</label>
+        <select id="id_kategori" name="id_kategori" required>
+            <option value="">Pilih Kategori</option>
+            <?php if(isset($kategori) && !empty($kategori)): ?>
+                <?php foreach($kategori as $kat): ?>
+                    <option value="<?= $kat['id_kategori'] ?>"
+                        <?= old('id_kategori', $data['id_kategori'] ?? '') == $kat['id_kategori'] ? 'selected' : ''; ?>>
+                        <?= $kat['nama_kategori'] ?>
+                    </option>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <option value="">Tidak ada kategori tersedia</option>
+            <?php endif; ?>
+        </select>
+    </p>
+    <p>
         <label for="status">Status:</label>
         <select id="status" name="status">
             <option value="0" <?= old('status', $data['status']) == '0' ? 'selected' : ''; ?>>Draft</option>

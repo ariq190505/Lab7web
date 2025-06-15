@@ -16,6 +16,8 @@ $routes->get('/artikel/(:any)', 'Artikel::view/$1');
 $routes->get('/kategori/(:any)', 'Kategori::view/$1');
 $routes->get('/testdb', 'Page::testdb');
 $routes->get('/createdb', 'Page::createdb');
+$routes->get('/databasetest', 'DatabaseTest::index');
+$routes->get('/databasetest/create', 'DatabaseTest::createTables');
 
 // Admin routes
 $routes->group('admin', function($routes) {
