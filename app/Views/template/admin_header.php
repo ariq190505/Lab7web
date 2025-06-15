@@ -18,4 +18,3 @@
         <section id="wrapper">
             <section id="main">
                 <div class="admin-content">
-                    <h2><?= $title; ?></h2>
