@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\ArtikelModel;
+use App\Models\KategoriModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
 
 class Artikel extends BaseController
@@ -43,13 +44,18 @@ class Artikel extends BaseController
     {
         $title = "Tambah Artikel";
 
+        // Get kategori untuk dropdown
+        $kategoriModel = new KategoriModel();
+        $kategori_list = $kategoriModel->getKategoriDropdown();
+
         // Cek apakah form sudah di-submit
         if ($this->request->getMethod() === 'post') {
             // validasi data.
             $validation = \Config\Services::validation();
             $validation->setRules([
                 'judul' => 'required|min_length[3]|max_length[200]',
-                'isi' => 'required|min_length[10]'
+                'isi' => 'required|min_length[10]',
+                'id_kategori' => 'required|numeric'
             ]);
             $isDataValid = $validation->withRequest($this->request)->run();
 
@@ -59,7 +65,8 @@ class Artikel extends BaseController
                     'judul' => $this->request->getPost('judul'),
                     'isi' => $this->request->getPost('isi'),
                     'slug' => url_title($this->request->getPost('judul')),
-                    'status' => $this->request->getPost('status') ?? 0 // Status dari form atau default draft
+                    'id_kategori' => $this->request->getPost('id_kategori'),
+                    'status' => $this->request->getPost('status') ?? 0
                 ]);
 
                 session()->setFlashdata('success', 'Artikel berhasil ditambahkan!');
@@ -74,7 +81,7 @@ class Artikel extends BaseController
             }
         }
 
-        return view('artikel/form_add', compact('title'));
+        return view('artikel/form_add', compact('title', 'kategori_list'));
     }
 
     public function edit($id)

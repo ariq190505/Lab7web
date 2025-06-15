@@ -14,6 +14,8 @@
             <a href="<?= base_url('/admin/artikel');?>">Dashboard</a>
             <a href="<?= base_url('/admin/artikel');?>">Artikel</a>
             <a href="<?= base_url('/admin/artikel/add');?>">Tambah Artikel</a>
+            <a href="<?= base_url('/admin/kategori');?>">Kategori</a>
+            <a href="<?= base_url('/admin/kategori/add');?>">Tambah Kategori</a>
             <a href="<?= base_url('/');?>" target="_blank">Lihat Website</a>
         </nav>
         <section id="wrapper">
