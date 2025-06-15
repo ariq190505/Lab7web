@@ -141,9 +141,9 @@ class Artikel extends BaseController
         }
 
         // ambil data lama
-        $data = $artikel->where('id', $id)->first();
+        $artikel_data = $artikel->where('id', $id)->first();
 
-        if (!$data) {
+        if (!$artikel_data) {
             session()->setFlashdata('error', 'Artikel tidak ditemukan!');
             return redirect('admin/artikel');
         }
@@ -153,7 +153,11 @@ class Artikel extends BaseController
         $kategori = $kategoriModel->findAll();
 
         $title = "Edit Artikel";
-        return view('artikel/form_edit', compact('title', 'data', 'kategori'));
+        return view('artikel/form_edit', [
+            'title' => $title,
+            'artikel' => $artikel_data,
+            'kategori' => $kategori
+        ]);
     }
 
     public function delete($id)
