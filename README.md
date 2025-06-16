@@ -755,7 +755,7 @@ public function index()
 
 <!-- Pagination dengan Query Parameter -->
 <?= $pager->only(['q', 'kategori_id'])->links(); ?>
-````
+
 </augment_code_snippet>
 
 ### 7.6 Testing Results
@@ -794,19 +794,15 @@ public function index()
 ### 7.8 Screenshots Modul 7
 
 #### Halaman Artikel dengan Search & Filter
-![Artikel Search](screenshots/modul7_artikel_search.png)
+![Screenshot 2025-06-16 195658](https://github.com/user-attachments/assets/57d9e772-0fd6-44e3-a2d2-3fb6eede17d5)
 *Halaman artikel publik dengan fitur search dan filter kategori*
 
-#### Admin Panel dengan Pagination
-![Admin Panel](screenshots/modul7_admin_panel.png)
-*Admin panel dengan search, filter, dan pagination*
-
 #### Form Add Artikel dengan Kategori
-![Form Add](screenshots/modul7_form_add.png)
+![Screenshot 2025-06-16 185620](https://github.com/user-attachments/assets/e86330ea-870e-41f3-88b7-bdccb0ba5859)
 *Form tambah artikel dengan dropdown kategori*
 
 #### Detail Artikel dengan Kategori
-![Detail Artikel](screenshots/modul7_detail.png)
+![image](https://github.com/user-attachments/assets/c07bd3e1-83d5-4c03-9394-7b6fae5ee72e)
 *Detail artikel menampilkan informasi kategori*
 
 **✅ Hasil**: Database relations, search & filter, dan enhanced CRUD berhasil diimplementasikan.
@@ -848,7 +844,7 @@ Repository ini berisi implementasi lengkap dari 4 modul praktikum CodeIgniter 4:
 
 **Praktikum Pemrograman Web 2**
 - **Mata Kuliah**: Pemrograman Web 2
-- **Dosen**: Agung Nugroho
+- **Dosen**: Agung Nugroho, S.Kom., M.Kom
 - **Universitas**: Pelita Bangsa, Bekasi
 
 **Mahasiswa:**
